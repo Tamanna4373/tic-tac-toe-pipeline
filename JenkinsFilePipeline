@@ -1,27 +1,38 @@
 pipeline {
     agent any
+
     environment {
         FIREBASE_DEPLOY_TOKEN = credentials('firebase-token')
     }
+
     stages {
         stage('Install Firebase') {
             steps {
                 echo 'Firebase CLI is already installed globally inside Jenkins container.'
             }
         }
+
         stage('Testing') {
             steps {
-                sh '/usr/bin/firebase deploy -P tic-tac-toe-testing --token "$FIREBASE_DEPLOY_TOKEN"'
+                sh '''
+                    /usr/bin/firebase deploy -P tic-tac-toe-testing-15149 --token "$FIREBASE_DEPLOY_TOKEN"
+                '''
             }
         }
+
         stage('Staging') {
             steps {
-                sh '/usr/bin/firebase deploy -P tic-tac-toe-staging --token "$FIREBASE_DEPLOY_TOKEN"'
+                sh '''
+                    /usr/bin/firebase deploy -P tic-tac-toe-staging-4ffa2 --token "$FIREBASE_DEPLOY_TOKEN"
+                '''
             }
         }
+
         stage('Production') {
             steps {
-                sh '/usr/bin/firebase deploy -P tic-tac-toe-production --token "$FIREBASE_DEPLOY_TOKEN"'
+                sh '''
+                    /usr/bin/firebase deploy -P tic-tac-toe-production-26bfd --token "$FIREBASE_DEPLOY_TOKEN"
+                '''
             }
         }
     }
