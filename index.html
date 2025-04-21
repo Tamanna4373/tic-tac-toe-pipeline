@@ -14,7 +14,6 @@
   <link href="style.css" rel="stylesheet">
   <link rel="shortcut icon" type="image/x-icon"
     href="https://canvascctb.s3.ca-central-1.amazonaws.com/account_1/attachments/95/CCTB_favicon.ico" />
-
 </head>
 
 <body onload="initialize()">
@@ -55,8 +54,11 @@
       </td>
     </tr>
   </table>
-  <div id="restart" title="Start new game" onclick="restartGame(true)"><span
-      style="vertical-align:top;position:relative;top:-10px">#</span></div>
+
+  <div id="restart" title="Start new game" onclick="restartGame(true)">
+    <span style="vertical-align:top;position:relative;top:-10px">#</span>
+  </div>
+
   <table>
     <tr>
       <th class="th_list">Computer</th>
@@ -69,25 +71,25 @@
       <td class="td_list" id="player_score">0</td>
     </tr>
   </table>
+
   <!-- The modal dialog for announcing the winner -->
   <div id="winAnnounce" class="modal">
-    <!-- Modal content -->
     <div class="modal-content">
       <span class="close" onclick="closeModal('winAnnounce')">&times;</span>
       <p id="winText"></p>
     </div>
   </div>
+
   <!-- The dialog for getting feedback from the user -->
   <div id="userFeedback" class="modal">
-    <!-- Modal content -->
     <div class="modal-content">
       <p id="questionText"></p>
       <p><button id="yesBtn">Yes</button>&nbsp;<button id="noBtn">No</button></p>
     </div>
   </div>
+
   <!-- The options dialog -->
   <div id="optionsDlg" class="modal">
-    <!-- Modal content -->
     <div class="modal-content">
       <h2>Hi, how would you like to play?</h2>
       <h3>Difficulty:</h3>
@@ -99,6 +101,12 @@
       <p><button id="okBtn" onclick="getOptions()">Play</button></p>
     </div>
   </div>
+
+  <!-- 📅 Footer with Last Updated Date and Time -->
+  <footer>
+    <p>Last Updated: <script>document.write(new Date().toLocaleString());</script></p>
+  </footer>
+
 </body>
 <script src="js.js"></script>
 
